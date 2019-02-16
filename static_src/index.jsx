@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const element = React.createElement(
-    'h3',
-    {className: 'element'},
-    'Hello',
-);
+const element = <div>Hello<b>World</b></div>;
+
 
 ReactDOM.render(
     element,

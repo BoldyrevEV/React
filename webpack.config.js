@@ -10,8 +10,7 @@ module.exports = {
     context: `${__dirname}/static_src`, // Путь до входного файла
     output: { // Установили точку выхода
         path: `${__dirname}/static/build`, // Путь до точки выхода
-        filename: '[name].js',
-        //filename: NODE_ENV === 'development' ? '[name].js' : '[name]-[hash].js',
+        filename: NODE_ENV === 'development' ? '[name].js' : '[name]-[hash].js',
         publicPath: '/static/build/', // Нужно для браузера (изучить!)
     },
 
@@ -27,9 +26,10 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                include: `${__dirname}/static_src`,
-                loader: 'babel-loader?presets[]=react&presets[]=es2015&presets[]=stage-1',
                 exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                },
             },
             {
                 test: /\.css$/,
